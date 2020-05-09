@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+i {
+  color: #919191;
+}
+
 .background-bottom {
   width: 100%;
   height: 80vh;
@@ -18,32 +22,51 @@
   float: right;
 }
 
-.chat-options-container {
+.chat-options-container,
+.profile-options-container,
+.typebox-container {
   width: 100%;
-  height: 10%;
-  background-color: lightblue;/*DELETE*/
-  border: 2px solid black;/*DELETE*/
+  height: 7%;
+  padding: 0 15px;
+  background-color: #ededed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .chat-search-container {
   width: 100%;
   height: 5%;
-  background-color: lightyellow;/*DELETE*/
-  border: 2px solid black;/*DELETE*/
+  background-color: lightgrey;/*#f7f7f7*/
 }
 
 .chatlist-container {
   width: 100%;
-  height: 75%;
-  background-color: lightyellow;/*DELETE*/
-  border: 2px solid black;/*DELETE*/
+  height: 76%;
+  overflow-y: scroll;
+  background-color: white;/*CHANGE*/
+}
+
+.chatlist-item {
+  height: 60px;
+  border-bottom: 1px solid #e4e4e4;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+}
+
+.chatlist-pic-box img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  border-radius: 50%
 }
 
 .container {
   width: 80%;
   height: 96%;
   margin: auto;
-  background-color: lightyellow;/*DELETE*/
   position: fixed;
   top: 2%;
   left: 10%;
@@ -51,37 +74,72 @@
 
 .msgs-container {
   width: 100%;
-  height: 80%;
-  background-color: lightblue;/*DELETE*/
-  border: 2px solid black;/*DELETE*/
+  height: 86%;
+  overflow-y: scroll;
+  background: url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png');
 }
 
 .notifications-alert-container {
   width: 100%;
-  height: 10%;
-  background-color: lightyellow;/*DELETE*/
-  border: 2px solid black;/*DELETE*/
+  height: 12%;
+  background-color: #9de1fe;
+  display: flex;
+  align-items: center;
 }
 
-.profile-options-container {
-  width: 100%;
-  height: 10%;
-  background-color: lightyellow;/*DELETE*/
-  border: 2px solid black;/*DELETE*/
+.notifications-alert-icon-container {
+  width: 45px;
+  height: 45px;
+  margin-left: 15px;
+  margin-right: 15px;
+  background-color: #f5fcff;/*CHANGE*/
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.notifications-alert-icon-container i {
+  color: #9de1fe;
+}
+
+.options-iconbox i {
+  padding: 0 10px;
+}
+
+.options-pic img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  border-radius: 50%
+}
+
+.searchbar {
+  width: 95%;
+  height: 80%;
+  margin: auto;
+  border-radius: 20px;
+  background-color: white;
 }
 
 .sidebar {
   width: 30%;
   height: 100%;
-  background-color: lightcoral;/*DELETE*/
   float: left;
+  background-color: lightcoral;
+  border-right: 1px solid #e4e4e4;
+}
+
+.typebox {
+  width: 90%;
+  height: 70%;
+  border-radius: 20px;
+  background-color: white;
 }
 
 .typebox-container {
-  width: 100%;
-  height: 10%;
-  background-color: lightblue;/*DELETE*/
-  border: 2px solid black;/*DELETE*/
+  background-color: #f0f0f0;
+  justify-content: space-around;
 }
 
 #background {
