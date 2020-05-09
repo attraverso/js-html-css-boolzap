@@ -4,21 +4,26 @@
   box-sizing: border-box;
 }
 
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: lighter;
+}
+
 i {
   color: #919191;
 }
 
 .background-bottom {
   width: 100%;
-  height: 80vh;
-  background: rgb(248,249,250);
-  background: linear-gradient(180deg, rgba(248,249,250,1) 0%, rgba(210,219,219,1) 100%);
+  height: 85vh;
+  background: rgb(218,219,211);
+  background: linear-gradient(180deg, rgba(218,219,211,1) 0%, rgba(210,219,219,1) 100%);
 }
 
 .chat-container {
   width: 70%;
   height: 100%;
-  background-color: lightgreen;/*DELETE*/
+  background-color: lightgreen;/***DELETE***/
   float: right;
 }
 
@@ -37,28 +42,47 @@ i {
 .chat-search-container {
   width: 100%;
   height: 5%;
-  background-color: lightgrey;/*#f7f7f7*/
+  padding-left: 10px;
+  padding-top: 5px;
+  background-color: #f7f7f7;
 }
 
 .chatlist-container {
   width: 100%;
   height: 76%;
   overflow-y: scroll;
-  background-color: white;/*CHANGE*/
+  background-color: white;/***CHANGE***/
+}
+
+.chatlist-info {
+  width: 80%;
+}
+
+.chatlist-info-name {
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.chatlist-info-preview {
+  font-size: 12px;
+  margin-top: 5px;
+  overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 
 .chatlist-item {
-  height: 60px;
+  height: 73px;
   border-bottom: 1px solid #e4e4e4;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 15px;
+  padding-left: 10px;
 }
 
 .chatlist-pic-box img {
-  width: 50px;
-  height: 50px;
+  width: 49px;
+  height: 49px;
   object-fit: contain;
   border-radius: 50%
 }
@@ -92,7 +116,7 @@ i {
   height: 45px;
   margin-left: 15px;
   margin-right: 15px;
-  background-color: #f5fcff;/*CHANGE*/
+  background-color: #f5fcff;/***CHANGE***/
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -101,10 +125,12 @@ i {
 
 .notifications-alert-icon-container i {
   color: #9de1fe;
+  font-weight: bold;
 }
 
 .options-iconbox i {
   padding: 0 10px;
+  font-weight: bold;
 }
 
 .options-pic img {
@@ -117,9 +143,16 @@ i {
 .searchbar {
   width: 95%;
   height: 80%;
-  margin: auto;
   border-radius: 20px;
   background-color: white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.searchbar input {/***change font size/color***/
+  width: 90%;
+  border: none;
 }
 
 .sidebar {
@@ -135,6 +168,13 @@ i {
   height: 70%;
   border-radius: 20px;
   background-color: white;
+}
+
+.typebox input {
+  margin-left: 10px;
+  margin-top: 8px;
+  width: 95%;
+  border: none;
 }
 
 .typebox-container {
