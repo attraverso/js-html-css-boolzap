@@ -16,12 +16,12 @@
       <div class="background-bottom"></div>
     </div>
     <main>
-      <div class="container">
+      <div id="app-container">
         <!-- SIDEBAR -->
-        <div class="sidebar">
+        <aside class="sidebar">
           <div class="profile-options-container">
-            <div class="options-pic">
-              <img src="pics/me.png" alt="">
+            <div class="options-profile">
+              <img src="pics/wwx.png" alt="">
             </div>
             <div class="options-iconbox">
               <i class="fas fa-circle-notch"></i>
@@ -45,53 +45,26 @@
             </div>
           </div>
           <div class="chatlist-container">
-            <div class="chatlist-item">
+            <div class="chatlist-item active">
               <div class="chatlist-pic-box">
-                <img src="pics/wwx.png" alt="">
+                <img src="pics/ducklings.png" alt="">
               </div>
               <div class="chatlist-info">
-                <p class="chatlist-info-name">Chaotic Ray of Sunshine</p>
-                <p class="chatlist-info-preview">Lan Zhan!</p>
+                <p class="chatlist-info-name">Ducklings</p>
+                <p class="chatlist-info-preview">For once, I like where this is going</p>
               </div>
-              <div class="chatlist-time">
-
-              </div>
+              <div class="chatlist-timestamp"></div>
             </div>
+
             <div class="chatlist-item">
               <div class="chatlist-pic-box">
                 <img src="pics/lsz002.png" alt="">
               </div>
               <div class="chatlist-info">
-                <p class="chatlist-info-name">Polite Duckling</p>
-                <p class="chatlist-info-preview">Wei-qianbei, what exactly did you tell Hanguang Jun last night?</p>
+                <p class="chatlist-info-name">Best Duckling</p>
+                <p class="chatlist-info-preview">uhm, Wei-qianbei? Why does Hanguang-Jun looke like he's about to shred every book in the Library Pavillion to pieces?</p>
               </div>
-              <div class="chatlist-time">
-
-              </div>
-            </div>
-            <div class="chatlist-item">
-              <div class="chatlist-pic-box">
-                <img src="pics/jl001.png" alt="">
-              </div>
-              <div class="chatlist-info">
-                <p class="chatlist-info-name">Jin-guniang</p>
-                <p class="chatlist-info-preview">keep this up and istg I'll send fairy there</p>
-              </div>
-              <div class="chatlist-time">
-
-              </div>
-            </div>
-            <div class="chatlist-item">
-              <div class="chatlist-pic-box">
-                <img src="pics/wq001.jpg" alt="">
-              </div>
-              <div class="chatlist-info">
-                <p class="chatlist-info-name">Doc</p>
-                <p class="chatlist-info-preview">Wei Wuxian, where is A-Ning??</p>
-              </div>
-              <div class="chatlist-time">
-
-              </div>
+              <div class="chatlist-timestamp"></div>
             </div>
             <div class="chatlist-item">
               <div class="chatlist-pic-box">
@@ -99,11 +72,9 @@
               </div>
               <div class="chatlist-info">
                 <p class="chatlist-info-name">Zewu Jun</p>
-                <p class="chatlist-info-preview">:smiley:</p>
+                <p class="chatlist-info-preview">what now</p>
               </div>
-              <div class="chatlist-time">
-
-              </div>
+              <div class="chatlist-timestamp"></div>
             </div>
             <div class="chatlist-item">
               <div class="chatlist-pic-box">
@@ -113,19 +84,64 @@
                 <p class="chatlist-info-name">&gt;&colon;-&vert;</p>
                 <p class="chatlist-info-preview">Wei Ying?</p>
               </div>
-              <div class="chatlist-time">
+              <div class="chatlist-timestamp">
 
               </div>
             </div>
+            <div class="chatlist-item">
+              <div class="chatlist-pic-box">
+                <img src="pics/jl001.png" alt="">
+              </div>
+              <div class="chatlist-info">
+                <p class="chatlist-info-name">Jin-guniang</p>
+                <p class="chatlist-info-preview">tell Uncle and istg I'll send fairy there</p>
+              </div>
+              <div class="chatlist-timestamp">
+
+              </div>
+            </div>
+            <div class="chatlist-item">
+              <div class="chatlist-pic-box">
+                <img src="pics/jc.jpg" alt="">
+              </div>
+              <div class="chatlist-info">
+                <p class="chatlist-info-name">Purple Bat</p>
+                <p class="chatlist-info-preview">Yanli really wants you to come visit, you know</p>
+              </div>
+              <div class="chatlist-timestamp">
+
+              </div>
+            </div>
+            <div class="chatlist-item">
+              <div class="chatlist-pic-box">
+                <img src="pics/ljy.jpg" alt="">
+              </div>
+              <div class="chatlist-info">
+                <p class="chatlist-info-name">Little me</p>
+                <p class="chatlist-info-preview">yeah, right</p>
+              </div>
+              <div class="chatlist-timestamp"></div>
+            </div>
+            <div class="chatlist-item">
+              <div class="chatlist-pic-box">
+                <img src="pics/wq001.jpg" alt="">
+              </div>
+              <div class="chatlist-info">
+                <p class="chatlist-info-name">Doc</p>
+                <p class="chatlist-info-preview">Wei Wuxian, did you really send A-Ning to get you alcohol? Again??</p>
+              </div>
+              <div class="chatlist-timestamp"></div>
+            </div>
           </div>
-        </div>
+        </aside>
 
         <!-- RIGHT SIDE -->
 
-        <div class="chat-container">
+        <section class="chat-container">
           <div class="chat-options-container">
-            <div class="options-pic">
-              <img src="pics/lhk01.png" alt="">
+            <div class="options-profile">
+              <img src="pics/ducklings.png" alt="">
+              <span>Ducklings</span>
             </div>
             <div class="options-iconbox">
               <i class="fas fa-search"></i>
@@ -133,8 +149,62 @@
               <i class="fas fa-ellipsis-v"></i>
             </div>
           </div>
-          <div class="msgs-container">
-
+          <div class="msgs-area">
+            <div class="msgs-container">
+              <div class="msgs-daybreak">Today</div>
+              <div class="msg msg-incoming">
+                <div class="msg-sender lwj">&gt;&colon;-&vert;</div>
+                <p>Sizhui
+                  <span class="msg-time">12:50</span>
+                </p>
+              </div>
+              <div class="msg msg-incoming">
+                <div class="msg-sender lwj">&gt;&colon;-&vert;</div>
+                <p>You are teenagers. Would you like to commit a small crime?
+                  <span class="msg-time">12:50</span>
+                </p>
+              </div>
+              <div class="msg msg-incoming">
+                <div class="msg-sender lsz">Best Duckling</div>
+                <p><i>What?</i>
+                  <span class="msg-time">12:50</span>
+                </p>
+              </div>
+              <div class="msg msg-incoming">
+                <div class="msg-sender jl">Jin-guniang</div>
+                <p>wtf?
+                  <span class="msg-time">12:50</span>
+                </p>
+              </div>
+              <div class="msg msg-incoming">
+                <div class="msg-sender ljy">Little me</div>
+                <p>Oh my god <i>yes</i>.
+                  <span class="msg-time">12:50</span>
+                </p>
+              </div>
+              <div class="msg msg-incoming">
+                <div class="msg-sender ljy">Little me</div>
+                <p>This is the moment I’ve always been waiting for.
+                  <span class="msg-time">12:50</span>
+                </p>
+              </div>
+              <div class="msg msg-incoming">
+                <div class="msg-sender ljy">Little me</div>
+                <p>I’m ready. Hanguang-jun!
+                  <span class="msg-time">12:50</span>
+                </p>
+              </div>
+              <div class="msg msg-own">
+                <p> <img src="https://emojipedia-us.s3.dualstack.us-west-1.amazonaws.com/thumbs/240/samsung/220/popcorn_1f37f.png" alt="popcorn">
+                   <span class="msg-time">12:50</span>
+                 </p>
+              </div>
+              <div class="msg msg-own">
+                <p>For once, I like where this is going
+                   <span class="msg-time">12:50</span>
+                 </p>
+              </div>
+            </div>
           </div>
           <div class="typebox-container">
             <i class="far fa-laugh"></i>
@@ -143,7 +213,7 @@
             </div>
             <i class="fas fa-microphone"></i>
           </div>
-        </div>
+        <section>
       </div>
     </main>
   </body>
