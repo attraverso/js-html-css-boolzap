@@ -31,7 +31,7 @@ i {
 .profile-options-container,
 .typebox-container {
   width: 100%;
-  height: 7%;
+  height: 8%;
   padding: 0 15px;
   background-color: #ededed;
   display: flex;
@@ -49,7 +49,7 @@ i {
 
 .chatlist-container {
   width: 100%;
-  height: 76%;
+  height: 75%;
   overflow-y: scroll;
   background-color: white;/***CHANGE***/
 }
@@ -58,7 +58,8 @@ i {
   width: 80%;
 }
 
-.chatlist-info-name {
+.chatlist-info-name,
+.options-profile span {
   font-weight: 400;
   font-size: 14px;
 }
@@ -80,6 +81,10 @@ i {
   padding-left: 10px;
 }
 
+.chatlist-item.active {
+  background-color: #ebebeb;
+}
+
 .chatlist-pic-box img {
   width: 49px;
   height: 49px;
@@ -88,19 +93,71 @@ i {
 }
 
 .container {
-  width: 80%;
-  height: 96%;
+  width: 90%;
   margin: auto;
-  position: fixed;
-  top: 2%;
-  left: 10%;
+}
+
+.msg {
+  margin: 2px 0;
+  padding: 3px 5px 5px 10px;
+  min-height: 20px;
+  max-width: 60%;
+  clear: both;
+  border-radius: 5px;
+  font-size: 12px;
+  position: relative;
+}
+
+.msg img {
+  height: 15px;
+}
+
+.msg-own {
+  float: right;
+  background-color: #dcf8c6;
+}
+
+.msg-sender {
+  font-size: 11px;
+  font-weight: 400;
+}
+
+.msg-time {
+  height: 10px;
+  margin-left: 15px;
+  line-height: 23px;
+  float: right;
+  font-size: 9px;
+}
+
+.msg-incoming {
+  float: left;
+  background-color: #fff;
+}
+
+.msgs-area {
+  width: 100%;
+  height: 84%;
+  overflow-y: scroll;
+  background: url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png');
 }
 
 .msgs-container {
-  width: 100%;
-  height: 86%;
-  overflow-y: scroll;
-  background: url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png');
+  width: 90%;
+  margin: 2% auto;
+}
+
+.msgs-daybreak {
+  margin-top: 2px;
+  margin-bottom: 2px;
+  margin-left: calc(50% - 20px);
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 11px;
+  background-color: #e1f2fb;
+  float: left;
+  clear: both;
+  text-transform: uppercase;
 }
 
 .notifications-alert-container {
@@ -128,16 +185,31 @@ i {
   font-weight: bold;
 }
 
+.notifications-alert-text-container {
+  font-size: 13px;
+  line-height: 20px;
+}
+
+.notifications-alert-text-container i {
+  font-size: 11px;
+}
+
 .options-iconbox i {
   padding: 0 10px;
   font-weight: bold;
 }
 
-.options-pic img {
+.options-profile {
+  display: flex;
+    align-items: center;
+}
+
+.options-profile img {
   width: 40px;
   height: 40px;
   object-fit: contain;
-  border-radius: 50%
+  border-radius: 50%;
+  margin-right: 15px;
 }
 
 .searchbar {
@@ -180,6 +252,33 @@ i {
 .typebox-container {
   background-color: #f0f0f0;
   justify-content: space-around;
+}
+
+/*GROUP COLORS*/
+
+.lwj {
+  color: blue;
+}
+
+.lsz {
+  color: green;
+}
+
+.jl {
+  color: red;
+}
+
+.ljy {
+  color: purple;
+}
+
+#app-container {
+  width: 80%;
+  height: 96%;
+  margin: auto;
+  position: fixed;
+  top: 2%;
+  left: 10%;
 }
 
 #background {
