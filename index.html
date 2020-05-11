@@ -7,7 +7,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <!-- <script src="kplayground.js" charset="utf-8"></script> -->
+    <script src="main.js" charset="utf-8"></script>
   </head>
   <body>
     <!-- BACKGROUND -->
@@ -105,7 +105,7 @@
               </div>
               <div class="chatlist-info">
                 <p class="chatlist-info-name">Purple Bat</p>
-                <p class="chatlist-info-preview">Yanli really wants you to come visit, you know</p>
+                <p class="chatlist-info-preview">A-jie really wants you to come visit, you know</p>
               </div>
               <div class="chatlist-timestamp">
 
@@ -208,12 +208,20 @@
           <div class="typebox-container">
             <i class="far fa-laugh"></i>
             <div class="typebox">
-              <input type="text" placeholder="Type a message">
+              <input type="text" id="type-input" placeholder="Type a message">
             </div>
             <i class="fas fa-microphone"></i>
           </div>
         <section>
       </div>
     </main>
+
+    <div class="template">
+      <div class="msg msg-own">
+        <p><span class="msg-time"></span>
+         </p>
+      </div>
+    </div>
+
   </body>
 </html>

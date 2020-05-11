@@ -235,6 +235,10 @@ i {
   border-right: 1px solid #e4e4e4;
 }
 
+.template {
+  display: none;
+}
+
 .typebox {
   width: 90%;
   height: 70%;
