@@ -185,6 +185,15 @@ i {
   font-weight: bold;
 }
 
+.notifications-alert-text-container {
+  font-size: 13px;
+  line-height: 20px;
+}
+
+.notifications-alert-text-container i {
+  font-size: 11px;
+}
+
 .options-iconbox i {
   padding: 0 10px;
   font-weight: bold;
