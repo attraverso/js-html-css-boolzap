@@ -11,7 +11,7 @@ $('.chatlist-item').click(function() {
 
   /**SWITCH CHATS**/
   /*use data attribute to grab the chat item you're clicking on*/
-  var chatItem = $(this).data('contact');
+  chatItem = $(this).data('contact');
   console.log(chatItem);
   /*remove class active from every item in the chatlist*/
   $('.chatlist-item').removeClass('active');
@@ -31,33 +31,67 @@ $('.chatlist-item').click(function() {
   var contactImg = $(this).find('.chatlist-pic-box img').attr('src');
   /*put it in the profile box at the top of the right panel*/
   $('.chat-options-container .options-profile img').attr('src', contactImg);
-
-  /**SEARCH**/
-  /*launch control every time a key is released (otherwise it will launch without considering the last character inputed)*/
-  $('.searchbar input').keyup(function() {
-    search();
-  });
-
-  /**SHOW/HIDE MESSAGE DROPDOWN MENU ON CLICK**/
-  $('.msgs-container').on('click', '.msg-toggle', function() {
-    $(this).siblings('.msg-dropdown').toggleClass('active');
-  });
-
-
-  /**SEND MESSAGE**/
-  /*on click on mic icon*/
-  $('.fa-microphone').click(function() {
-    sendMessage(chatItem);
-  });
-  /*every time I hit enter*/
-  $('.typebox input').keypress(function(event){
-    if (event.which == '13') {
-    sendMessage(chatItem);
-    }
-  });
 })
 
+/**SEND MESSAGE**/
+/*on click on mic icon*/
+$('.fa-microphone').click(function() {
+  sendMessage(chatItem);
+  /*copy message in contacts preview*/
+  var userLastMsg = contactsLastMessage();
+  $('.chatlist-item.active .chatlist-info-preview').text(userLastMsg);
+});
+/*every time I hit enter*/
+$('.typebox input').keypress(function(event){
+  if (event.which == '13') {
+  sendMessage(chatItem);
+  /*copy message in contacts preview*/
+  var userLastMsg = contactsLastMessage();
+  $('.chatlist-item.active .chatlist-info-preview').text(userLastMsg);
+  }
+});
+
+/**SEARCH**/
+/*launch control every time a key is released (otherwise it will launch without considering the last character inputed)*/
+$('.searchbar input').keyup(function() {
+  search();
+});
+
+/**DROPDOWN, MESSAGE REMOVAL**/
+/*show on click*/
+$('.msgs-container').on('click', '.msg-toggle', function() {
+  $(this).siblings('.msg-dropdown').toggleClass('active');
+  /*hide on mouseleave*/
+}).on('mouseleave', '.msg-dropdown', function() {
+  $('.msg-dropdown').removeClass('active');
+  /*delete message*/
+}).on('click', '.msg-dd-delete', function() {
+  $(this).closest('.msg').remove();
+});
+
 /*FUNCTIONS*/
+
+/*SEND AUTOMATED REPLY after user message*/
+function automatedReply() {
+  /*copy template*/
+  var newMsg = $('.template .msg').clone();
+  /*add class for incoming msg*/
+  newMsg.addClass('msg-incoming');
+  /*fill incoming message content*/
+  newMsg.children('.msg-content').text('ok');
+  /*get current time*/
+  var currentTime = getTime();
+  newMsg.children('.msg-time').text(currentTime);
+  /*send template copy to html*/
+  $('.msgs-container.active').append(newMsg);
+  var userLastMsg = contactsLastMessage();
+  $('.chatlist-item.active .chatlist-info-preview').text(userLastMsg);
+}
+
+function contactsLastMessage() {
+  var msgContent = $('.msgs-container.active .msg:last-child .msg-content').text();
+  return msgContent;
+}
 
 /**GET TIME for message**/
 function getTime() {
@@ -88,7 +122,7 @@ function search() {
   }
 }
 
-/*SEND MESSAGE with content from input, get automated reply*/
+/*SEND MESSAGE with content from input, get automated reply from other function*/
 function sendMessage(contact) {
   /*grab user text from input*/
   var newMsgText = $('#type-input').val();
@@ -109,21 +143,10 @@ function sendMessage(contact) {
     /*input reset*/
     $('#type-input').val('');
     /*delay 1s*/
-    setTimeout(function(){
-      /*copy template*/
-      var newMsg = $('.template .msg').clone();
-      /*add class for incoming msg*/
-      newMsg.addClass('msg-incoming');
-      /*fill incoming message content*/
-      newMsg.children('.msg-content').text('ok');
-      /*get current time*/
-      var currentTime = getTime();
-      console.log('CT variable: ' + currentTime);
-      newMsg.children('.msg-time').text(currentTime);
-      /*send template copy to html*/
-      $('.msgs-container.active').append(newMsg);
-    }, 1000);
+    setTimeout(automatedReply, 1000);
   }
 }
+
+
 
 })/*DNT - closing document.ready*/

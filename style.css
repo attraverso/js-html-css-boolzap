@@ -129,11 +129,13 @@ i {
   height: 15px;
 }
 
-.msg-dd-option {
+.msg-dd {
   padding: 10px;
+  min-width: 110px;
 }
 
-.msg-dd-option:hover {
+.msg-dd-delete:hover,
+.msg-dd-edit:hover {
   background-color: #f0f0f0;
   cursor: pointer;
 }
@@ -151,6 +153,7 @@ i {
 
 .msg-dropdown.active {
   display: block;
+  z-index: 100;
 }
 
 .msg-incoming {
@@ -164,6 +167,10 @@ i {
 
 .msg-own {
   float: right;
+}
+
+.msg-own .msg-dropdown {
+  right: -20px;
 }
 
 .msg-own,
