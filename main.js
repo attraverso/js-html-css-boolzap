@@ -12,7 +12,6 @@ $('.chatlist-item').click(function() {
   /**SWITCH CHATS**/
   /*use data attribute to grab the chat item you're clicking on*/
   chatItem = $(this).data('contact');
-  console.log(chatItem);
   /*remove class active from every item in the chatlist*/
   $('.chatlist-item').removeClass('active');
   /*add class active to the item that matches the data attribute*/
@@ -26,7 +25,7 @@ $('.chatlist-item').click(function() {
   /*grab contact name*/
   var contactName = $(this).find('.chatlist-info-name').text();
   /*put it in the profile box at the top of the right panel*/
-  $('.options-profile span').text(contactName);
+  $('.options-profile-info-name').text(contactName);
   /*grab contact profile pic*/
   var contactImg = $(this).find('.chatlist-pic-box img').attr('src');
   /*put it in the profile box at the top of the right panel*/
@@ -38,16 +37,14 @@ $('.chatlist-item').click(function() {
 $('.fa-microphone').click(function() {
   sendMessage(chatItem);
   /*copy message in contacts preview*/
-  var userLastMsg = contactsLastMessage();
-  $('.chatlist-item.active .chatlist-info-preview').text(userLastMsg);
+  contactsLastMessage();
 });
 /*every time I hit enter*/
 $('.typebox input').keypress(function(event){
   if (event.which == '13') {
   sendMessage(chatItem);
   /*copy message in contacts preview*/
-  var userLastMsg = contactsLastMessage();
-  $('.chatlist-item.active .chatlist-info-preview').text(userLastMsg);
+  contactsLastMessage();
   }
 });
 
@@ -69,7 +66,8 @@ $('.msgs-container').on('click', '.msg-toggle', function() {
   $(this).closest('.msg').remove();
 });
 
-/*FUNCTIONS*/
+
+/* * FUNCTIONS * */
 
 /*SEND AUTOMATED REPLY after user message*/
 function automatedReply() {
@@ -77,27 +75,57 @@ function automatedReply() {
   var newMsg = $('.template .msg').clone();
   /*add class for incoming msg*/
   newMsg.addClass('msg-incoming');
-  /*fill incoming message content*/
-  newMsg.children('.msg-content').text('ok');
+  /*fill incoming message content with random message*/
+  autoText = randomMsg();
+  newMsg.children('.msg-content').text(autoText);
   /*get current time*/
   var currentTime = getTime();
   newMsg.children('.msg-time').text(currentTime);
   /*send template copy to html*/
   $('.msgs-container.active').append(newMsg);
-  var userLastMsg = contactsLastMessage();
-  $('.chatlist-item.active .chatlist-info-preview').text(userLastMsg);
+  /*copy message in contacts preview*/
+  contactsLastMessage();
 }
 
+/*GRAB LAST MESSAGE FROM CHAT to later update contact preview*/
 function contactsLastMessage() {
   var msgContent = $('.msgs-container.active .msg:last-child .msg-content').text();
-  return msgContent;
+  $('.chatlist-item.active .chatlist-info-preview').text(msgContent);
 }
 
 /**GET TIME for message**/
 function getTime() {
+  /*get current time*/
   var date = new Date();
-  var currentTime = date.getHours() + ':' + date.getMinutes();
+  /*extract hours and minutes*/
+  var currentHours = date.getHours();
+  var currentMinutes = date.getMinutes();
+  /*if < 10, add a '0' before it, then reassemble*/
+  if (currentHours < 10) {
+    currentHours = '0' + currentHours;
+  }
+  if (currentMinutes < 10) {
+    currentMinutes = '0' + currentMinutes;
+  }
+  currentTime = currentHours + ':' + currentMinutes;
   return currentTime;
+}
+
+/*GET RANDOM NUMBER*/
+function getRandomNr(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) ) + min;
+}
+
+/*GET RANDOM MESSAGE FOR AUTOMATED REPLY*/
+function randomMsg() {
+  /*establish possible replies*/
+  var choices = ['if you say so', 'oh really?', 'cool, cool', 'okay, then', 'lol', 'sure', 'uh-huh'];
+  /*get random number*/
+  var randomNr = getRandomNr(0,6);
+  console.log(randomNr);
+  /*pick reply from array based on random number*/
+  var reply = choices.slice(randomNr, (randomNr + 1)).toString();
+  return reply;
 }
 
 /*SEARCH CONTACTS*/
@@ -136,7 +164,6 @@ function sendMessage(contact) {
     newMsg.children('.msg-content').text(newMsgText);
     /*get current time*/
     var currentTime = getTime();
-    console.log('CT variable: ' + currentTime);
     newMsg.children('.msg-time').text(currentTime);
     /*send template copy to html in the msgs-container of the active contact*/
     $('.msgs-container.active').append(newMsg);
@@ -146,7 +173,5 @@ function sendMessage(contact) {
     setTimeout(automatedReply, 1000);
   }
 }
-
-
 
 })/*DNT - closing document.ready*/

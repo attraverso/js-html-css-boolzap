@@ -30,7 +30,7 @@ i {
 #advice {
   width: 70%;
   height: 100%;
-  background-color: lightgreen;/***DELETE***/
+  background-color: #ededed;
   float: right;
 }
 
@@ -75,12 +75,13 @@ i {
 }
 
 .chatlist-info-name,
-.options-profile span {
+.options-profile-info-name {
   font-weight: 400;
   font-size: 14px;
 }
 
-.chatlist-info-preview {
+.chatlist-info-preview,
+.options-profile-info-preview {
   font-size: 12px;
   margin-top: 5px;
   overflow: hidden;
