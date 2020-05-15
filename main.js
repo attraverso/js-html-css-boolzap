@@ -48,6 +48,21 @@ $('.typebox input').keypress(function(event){
   }
 });
 
+/**CHANGE MIC ICON TO SEND WHEN WRITING MESSAGE**/
+/*when typebox input has focus*/
+$('.typebox input').focus(function() {
+  /*change icon*/
+  $('.typebox-container i:last-child').removeClass('fas fa-microphone');
+  $('.typebox-container i:last-child').addClass('fab fa-telegram-plane');
+})
+/*when typebox input loses focus*/
+$('.typebox input').blur(function() {
+  /*change icon*/
+  $('.typebox-container i:last-child').removeClass('fab fa-telegram-plane');
+  $('.typebox-container i:last-child').addClass('fas fa-microphone');
+})
+
+
 /**SEARCH**/
 /*launch control every time a key is released (otherwise it will launch without considering the last character inputed)*/
 $('.searchbar input').keyup(function() {
@@ -67,7 +82,8 @@ $('.msgs-container').on('click', '.msg-toggle', function() {
 });
 
 
-/* * FUNCTIONS * */
+
+/* * FUNCTIONS - alphabetical order * */
 
 /*SEND AUTOMATED REPLY after user message*/
 function automatedReply() {
@@ -83,6 +99,10 @@ function automatedReply() {
   newMsg.children('.msg-time').text(currentTime);
   /*send template copy to html*/
   $('.msgs-container.active').append(newMsg);
+  /*scroll down 500px*/
+  $('.msgs-area').animate({
+      scrollTop: $('.msg:last-child').offset().top
+    }, 500);
   /*copy message in contacts preview*/
   contactsLastMessage();
 }
@@ -119,9 +139,9 @@ function getRandomNr(min, max) {
 /*GET RANDOM MESSAGE FOR AUTOMATED REPLY*/
 function randomMsg() {
   /*establish possible replies*/
-  var choices = ['if you say so', 'oh really?', 'cool, cool', 'okay, then', 'lol', 'sure', 'uh-huh'];
+  var choices = ['if you say so', 'oh really?', 'cool, cool', 'okay, then', 'lol', 'sure', 'uh-huh', 'oh come on', 'unbelievable', 'smh'];
   /*get random number*/
-  var randomNr = getRandomNr(0,6);
+  var randomNr = getRandomNr(0,9);
   console.log(randomNr);
   /*pick reply from array based on random number*/
   var reply = choices.slice(randomNr, (randomNr + 1)).toString();
@@ -158,8 +178,8 @@ function sendMessage(contact) {
   var newMsg = $('.template .msg').clone();
   /*add class for sent msg*/
   newMsg.addClass('msg-own');
-  /*if the input isn't empty*/
-  if (newMsg != '') {
+  /*if the input isn't empty / only made of spaces*/
+  if ($('.typebox input').val().trim() != '') {
     /*send input to the template copy*/
     newMsg.children('.msg-content').text(newMsgText);
     /*get current time*/
@@ -169,6 +189,10 @@ function sendMessage(contact) {
     $('.msgs-container.active').append(newMsg);
     /*input reset*/
     $('#type-input').val('');
+    /*scroll down 500px*/
+    $('.msgs-area').animate({
+        scrollTop: $('.msg:last-child').offset().top
+      }, 500);
     /*delay 1s*/
     setTimeout(automatedReply, 1000);
   }
