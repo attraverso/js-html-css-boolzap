@@ -1,7 +1,5 @@
 /*DNT*/$(document).ready(function() {/*DNT*/
 
-
-
 /*when you click on a contact*/
 $('.chatlist-item').click(function() {
 
@@ -84,7 +82,11 @@ $('.msgs-container').on('click', '.msg-toggle', function() {
   $('.msg-dropdown').removeClass('active');
   /*delete message*/
 }).on('click', '.msg-dd-delete', function() {
-  $(this).closest('.msg').remove();
+  /*completely remove message*/
+  // $(this).closest('.msg').remove();
+  /*replace message with reminder*/
+  $(this).parents().siblings('.msg-time').remove();
+  $(this).parents().siblings('.msg-content').html('<i class="fas fa-ban"></i><em> You deleted this message</em>');
 });
 
 
@@ -116,11 +118,15 @@ function automatedReply() {
   contactsLastMessage();
 }
 
-/*GRAB LAST MESSAGE FROM CHAT to later update contact preview*/
+/*GRAB LAST MESSAGE FROM CHAT to update contact preview*/
 function contactsLastMessage() {
+  /*grab last message's content*/
   var msgContent = $('.msgs-container.active .msg:last-child .msg-content').text();
+  /*send to contact preview*/
   $('.chatlist-item.active .chatlist-info-preview').text(msgContent);
+  /*grab last message's timestamp*/
   var msgTime = $('.msgs-container.active .msg:last-child .msg-time').text();
+  /*send to contact preview*/
   $('.chatlist-item.active .chatlist-timestamp').text(msgTime);
 
 }
@@ -154,7 +160,6 @@ function randomMsg() {
   var choices = ['if you say so', 'oh really?', 'cool, cool', 'okay, then', 'lol', 'sure', 'uh-huh', 'oh come on', 'unbelievable', 'smh'];
   /*get random number*/
   var randomNr = getRandomNr(0,9);
-  console.log(randomNr);
   /*pick reply from array based on random number*/
   var reply = choices.slice(randomNr, (randomNr + 1)).toString();
   return reply;
