@@ -160,6 +160,19 @@ i {
   flex-shrink: 0;
 }
 
+.msg-warning {
+  margin-top: 2px;
+  margin-bottom: 2px;
+  max-width: 50%;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 11px;
+  background-color: #fff5c4;
+  align-self: center;
+  text-align: center;
+  flex-shrink: 0;
+}
+
 .msg-dd {
   padding: 10px;
   min-width: 110px;
