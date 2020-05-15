@@ -1,5 +1,7 @@
 /*DNT*/$(document).ready(function() {/*DNT*/
 
+
+
 /*when you click on a contact*/
 $('.chatlist-item').click(function() {
 
@@ -20,6 +22,10 @@ $('.chatlist-item').click(function() {
   $('.msgs-container').removeClass('active');
   /*add class active to the msgs container that matches the data attribute*/
   $('.msgs-container[data-contact="' + chatItem + '"]').addClass('active');
+  /*grab timestamp of the last incoming message*/
+  var initialLastSeen = $('.msgs-container[data-contact="' + chatItem + '"]').children().last('.msg-incoming').children('.msg-time').text();
+  /*put it after 'last seen at' in chat-options*/
+  $('#options-profile-time').text(initialLastSeen);
 
   /**MATCH CHAT PROFILE TO SELECTED CONTACT**/
   /*grab contact name*/
@@ -96,7 +102,10 @@ function automatedReply() {
   newMsg.children('.msg-content').text(autoText);
   /*get current time*/
   var currentTime = getTime();
+  /*primt timestamp on new message*/
   newMsg.children('.msg-time').text(currentTime);
+  /*update 'last seen at' in chat-options*/
+  $('#options-profile-time').text(currentTime);
   /*send template copy to html*/
   $('.msgs-container.active').append(newMsg);
   /*scroll down 500px*/
@@ -111,6 +120,9 @@ function automatedReply() {
 function contactsLastMessage() {
   var msgContent = $('.msgs-container.active .msg:last-child .msg-content').text();
   $('.chatlist-item.active .chatlist-info-preview').text(msgContent);
+  var msgTime = $('.msgs-container.active .msg:last-child .msg-time').text();
+  $('.chatlist-item.active .chatlist-timestamp').text(msgTime);
+
 }
 
 /**GET TIME for message**/
