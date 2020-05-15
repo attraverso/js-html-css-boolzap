@@ -76,6 +76,7 @@ $('.searchbar input').keyup(function() {
 /**CLICKING ON CROSS ON SEARCHBAR EMPTIES INPUT**/
 $('.chat-search-container').on('click', '.searchbar .fa-times.active', function() {
   $('.searchbar input').val('');
+  $('.searchbar .fa-times.active').removeClass('active');
   /*show all contacts*/
   $('.chatlist-item').show();
 });
