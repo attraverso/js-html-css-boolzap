@@ -73,7 +73,15 @@ $('.searchbar input').keyup(function() {
   search();
 });
 
-/**DROPDOWN, MESSAGE REMOVAL**/
+/**CLICKING ON CROSS ON SEARCHBAR EMPTIES INPUT**/
+$('.chat-search-container').on('click', '.searchbar .fa-times.active', function() {
+  $('.searchbar input').val('');
+  /*show all contacts*/
+  $('.chatlist-item').show();
+});
+
+
+/**DROPDOWN, MESSAGE REMOVAL/REPLACEMENT**/
 /*show on click*/
 $('.msgs-container').on('click', '.msg-toggle', function() {
   $(this).siblings('.msg-dropdown').toggleClass('active');
@@ -112,7 +120,7 @@ function automatedReply() {
   $('.msgs-container.active').append(newMsg);
   /*scroll down 500px*/
   $('.msgs-area').animate({
-      scrollTop: $('.msg:last-child').offset().top
+      scrollTop: $('.msg:last-child').offset().bottom
     }, 500);
   /*copy message in contacts preview*/
   contactsLastMessage();
@@ -167,10 +175,12 @@ function randomMsg() {
 
 /*SEARCH CONTACTS*/
 function search() {
+  /*grab user input, convert to lowercase, put in a value for later use*/
+  var searchFor = $('.searchbar input').val().trim().toLowerCase();
   /*if the string is not empty (prevents check on all chats when you delete the last remaining character from the searchbar)*/
   if ($('.searchbar input') != '') {
-    /*grab user input, convert to lowercase, put in a value for later use*/
-    var searchFor = $('.searchbar input').val().trim().toLowerCase();
+    /*show cross for clearing input*/
+    $('.searchbar .fa-times').addClass('active');
     /*for each contact name*/
     $('.chatlist-info-name').each(function() {
       /*grab content, convert to lowercase, save in var for later*/
@@ -184,6 +194,9 @@ function search() {
         $(this).closest('.chatlist-item').hide();
       }
     });
+    /*if the searchbar input is empty, remove cross*/
+  } else {
+    $('.searchbar .fa-times').removeClass('active');
   }
 }
 
@@ -208,7 +221,7 @@ function sendMessage(contact) {
     $('#type-input').val('');
     /*scroll down 500px*/
     $('.msgs-area').animate({
-        scrollTop: $('.msg:last-child').offset().top
+        scrollTop: $('.msg:last-child').offset().bottom
       }, 500);
     /*delay 1s*/
     setTimeout(automatedReply, 1000);

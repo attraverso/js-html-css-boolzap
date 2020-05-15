@@ -339,8 +339,20 @@ i {
   align-items: center;
 }
 
+.searchbar .fa-times {
+  visibility: hidden;
+}
+
+.searchbar .fa-times.active {
+  visibility: visible;
+}
+
+.searchbar i {
+  margin: 0 5px;
+}
+
 .searchbar input {/***change font size/color***/
-  width: 90%;
+  width: 85%;
   border: none;
 }
 
