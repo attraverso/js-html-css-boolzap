@@ -66,7 +66,6 @@ $('.typebox input').blur(function() {
   $('.typebox-container i:last-child').addClass('fas fa-microphone');
 })
 
-
 /**SEARCH**/
 /*launch control every time a key is released (otherwise it will launch without considering the last character inputed)*/
 $('.searchbar input').keyup(function() {
@@ -74,13 +73,12 @@ $('.searchbar input').keyup(function() {
 });
 
 /**CLICKING ON CROSS ON SEARCHBAR EMPTIES INPUT**/
-$('.chat-search-container').on('click', '.searchbar .fa-times.active', function() {
+$('.searchbar').on('click', '.fa-times.active', function() {
   $('.searchbar input').val('');
   $('.searchbar .fa-times.active').removeClass('active');
   /*show all contacts*/
   $('.chatlist-item').show();
 });
-
 
 /**DROPDOWN, MESSAGE REMOVAL/REPLACEMENT**/
 /*show on click*/
@@ -105,20 +103,26 @@ $('.msgs-container').on('click', '.msg-toggle', function() {
 /*SEND AUTOMATED REPLY after user message*/
 function automatedReply() {
   /*copy template*/
-  var newMsg = $('.template .msg').clone();
+  var grabTemplateFrom = $('#msg-template').html();
+  var template = Handlebars.compile(grabTemplateFrom);
   /*add class for incoming msg*/
-  newMsg.addClass('msg-incoming');
+  // newMsg.addClass('msg-incoming');
   /*fill incoming message content with random message*/
   autoText = randomMsg();
-  newMsg.children('.msg-content').text(autoText);
   /*get current time*/
   var currentTime = getTime();
-  /*primt timestamp on new message*/
-  newMsg.children('.msg-time').text(currentTime);
+
+  var fillMsg = {
+    'msgContent': autoText,
+    'msgTime': currentTime,
+    'msgClass': 'msg-incoming'
+  }
+
+  var html = template(fillMsg);
   /*update 'last seen at' in chat-options*/
   $('#options-profile-time').text(currentTime);
   /*send template copy to html*/
-  $('.msgs-container.active').append(newMsg);
+  $('.msgs-container.active').append(html);
   /*scroll down 500px*/
   $('.msgs-area').animate({
       scrollTop: $('.msg:last-child').offset().bottom
@@ -205,25 +209,29 @@ function search() {
 function sendMessage(contact) {
   /*grab user text from input*/
   var newMsgText = $('#type-input').val();
-  /*copy template*/
-  var newMsg = $('.template .msg').clone();
-  /*add class for sent msg*/
-  newMsg.addClass('msg-own');
+  /*copy template & have Handlebars compile it*/
+  var grabTemplateFrom = $('#msg-template').html();
+  var template = Handlebars.compile(grabTemplateFrom);
   /*if the input isn't empty / only made of spaces*/
   if ($('.typebox input').val().trim() != '') {
-    /*send input to the template copy*/
-    newMsg.children('.msg-content').text(newMsgText);
-    /*get current time*/
+    /*grab current timestamp*/
     var currentTime = getTime();
-    newMsg.children('.msg-time').text(currentTime);
-    /*send template copy to html in the msgs-container of the active contact*/
-    $('.msgs-container.active').append(newMsg);
+    /*fill template*/
+    var fillMsg = {
+      'msgContent': newMsgText,
+      'msgTime': currentTime,
+      'msgClass': 'msg-own'
+    }
+    /*grab filled template*/
+    var html = template(fillMsg);
+    /*send filled template to html in the msgs-container of the active contact*/
+    $('.msgs-container.active').append(html);
     /*input reset*/
     $('#type-input').val('');
     /*scroll down 500px*/
-    $('.msgs-area').animate({
-        scrollTop: $('.msg:last-child').offset().bottom
-      }, 500);
+    // $('.msgs-area').animate({
+    //     scrollTop: $('.msg:last-child').offset().bottom
+    //   }, 500);
     /*delay 1s*/
     setTimeout(automatedReply, 1000);
   }

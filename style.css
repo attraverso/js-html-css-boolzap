@@ -278,8 +278,7 @@ i {
 
 .msgs-container {
   width: 90%;
-  height: 100%;
-  margin: 2% auto;
+  margin: auto;
   display: none;
 }
 
@@ -375,10 +374,6 @@ i {
   float: left;
   background-color: lightcoral;
   border-right: 1px solid #e4e4e4;
-}
-
-.template {
-  display: none;
 }
 
 .typebox {
