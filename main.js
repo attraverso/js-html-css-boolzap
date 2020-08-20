@@ -1,5 +1,12 @@
 /*DNT*/$(document).ready(function() {/*DNT*/
 
+/* close disclaimer tab*/
+$('.disclaimer-close').click(() => {
+  $('.disclaimer').hide();
+  $('main').removeClass('hide');
+})
+
+
 /*when you click on a contact*/
 $('.chatlist-item').click(function() {
 

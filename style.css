@@ -124,8 +124,43 @@ i {
   margin: auto;
 }
 
+.disclaimer {
+  width: 500px;
+  height: 170px;
+  background-color: #444;
+  color: #fff;
+  text-align: center;
+  position: absolute;
+  top: 50vh;
+  left: 50vw;
+  transform: translate(-50%, -50%);
+  padding: 30px;
+  border-radius: 5px;
+  z-index: 20;
+}
+
+.disclaimer-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.disclaimer-body {
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.disclaimer-close {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 .graytext {
   color: rgba(0,0,0,0.45);
+}
+
+.hide {
+  display: none;
 }
 
 .msg {
